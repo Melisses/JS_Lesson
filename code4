@@ -8,3 +8,20 @@
 Для этого переделайте функцию countBs.
 
 **Решение**
+let counter = function(){
+  let kol=0;
+  return function(){
+    return ++kol;
+  }
+}
+
+let countBs = function(str, smb = 'B') {
+  let number = counter();
+  for (let i = 0; i < str.length; i++)
+    if (str.charAt(i) === smb)
+      ss = number();
+  return ss;
+}
+
+console.log(countBs('BBBbbddffewggghhhBB')); // 5
+console.log(countBs('BBBbbddffewggghhhBB','b')); // 2
