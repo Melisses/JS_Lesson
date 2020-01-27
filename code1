@@ -1,0 +1,21 @@
+let isEven = function(n) {
+  if (n < 0) return 'Введено отрицательное число';
+  //Как вариант можно отрицательное число переводить в положительное и тогда этот иф будет:
+  //if (n < 0) return isEven(-n);
+
+  switch (n) {
+    case 0: 
+      return true;
+      break;
+    case 1:
+      return false;
+      break;
+    default:
+      return isEven(n - 2);
+      break;
+  }
+}
+
+console.log(isEven(50)) //true
+console.log(isEven(75)) //false
+console.log(isEven(-1)) //Введено отрицательное число или false
