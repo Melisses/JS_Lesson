@@ -9,3 +9,10 @@
 #######
 
 **Решение**
+let triangle = function(l) {
+  var per = '';
+  for (let i = 1; i <= l; i++) 
+    console.log(per += '#');
+}
+
+triangle(7);
