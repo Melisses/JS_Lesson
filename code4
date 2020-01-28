@@ -20,6 +20,7 @@ let countBs = function(str, smb = 'B') {
   for (let i = 0; i < str.length; i++)
     if (str.charAt(i) === smb)
       var ss = number();
+    else ss = 0;
   return ss;
 }
 
