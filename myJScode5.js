@@ -94,6 +94,34 @@ const Shop = function() { //функционал магазина
       }
     return 'Количество товаров на складе - '+count+' шт.';
     }
+
+    this.itemsSklad = () => { //сбор данных о количестве типов товаров на складе
+      let itogItems = {};
+      let group = '';
+      for (let i = 0; i < this.Items.length; i++) {
+        group = this.Items[i].type;
+        if (group in itogItems) {
+          itogItems[group]++;
+        } else {
+          itogItems[group] = 1;
+        }
+      }
+    return itogItems;
+    }
+
+    this.itemsSaled = () => { //сбор данных о количестве проданых типов товаров
+    let itogItems = {};
+      let group = '';
+      for (let i = 0; i < this.Hystorys.length; i++) {
+        group = this.Hystorys[i].typeItem;
+        if (group in itogItems) {
+          itogItems[group] += this.Hystorys[i].kolItem;
+        } else {
+          itogItems[group] = this.Hystorys[i].kolItem;
+        }
+      }
+    return itogItems;
+    }
   }
 }
 
@@ -121,5 +149,7 @@ console.log(myShop); //продажа машины
 myShop.sales('03-12-2019',1,6,2); //покупаем мясо в уже обновленном массиве Товаров
 console.log(myShop); //продажа мяса
 
-console.log(myShop.profit());
-console.log(myShop.realSklad());
+console.log(myShop.profit()); //наша прибыль
+console.log(myShop.realSklad()); //наши остатки на складе
+console.log('Остатки типов товаров на складе:',myShop.itemsSklad());
+console.log('Продано типов товаров:',myShop.itemsSaled());
