@@ -1,20 +1,21 @@
+//Задача 1. Сумма диапазона
 const range = function(first, last, step = 1) {
     let arr = [];
     per = first;
 
-    if ((step > 0 && last < first) || (step < 0 && first < last)) {
+    if ((step > 0 && last < first) || (step < 0 && first < last)) { //проверяем границы при положительном и отрицательном шаге
         first = last;
         last = per;
         console.log('Диапазоны для заданного шага неверны. Меняю местами');
     }
 
-    for (let i = first; i !== (last + step); i += step) {
+    for (let i = first; i !== (last + step); i += step) { //формирование массива
         arr.push(i);
     }
     return arr;
 }
 
-const sum = function(arr) {
+const sum = function(arr) { //посчёт суммы елементов массива
     let sum = 0;
     for (let i = 0; i < arr.length; i++)
         sum += arr[i];
