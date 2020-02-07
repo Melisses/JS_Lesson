@@ -1,4 +1,5 @@
-function reverseArray(arr) {
+//Задача 3. Обращаем вспять массив.
+function reverseArray(arr) { //создание нового пересортированного массива. Простое решение.
     let arritg = [];
     for (let i = arr.length - 1; i >= 0; i--) {
         arritg.push(arr[i]);
@@ -6,7 +7,8 @@ function reverseArray(arr) {
     return arritg;
 }
 
-function reverseArrayInPlace(arr) {
+//пересортировка в том же массиве. Тут я придумала алгоритм прохода с концов к середине с заменой противоположных с начала и конца символов
+function reverseArrayInPlace(arr) { 
     let j = arr.length - 1;
     for (let i = 0; i < j; i++) {
         temp = arr[i];
