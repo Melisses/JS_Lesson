@@ -1,0 +1,160 @@
+const Item = function(id,name,type,price) { 
+  this.id = id;
+  this.name = name;
+  this.type = type;
+  this.price = price;
+}
+
+class Client {
+  constructor(id,firstname,lastname,summa = 0) { 
+    this.id = id;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.summa = summa;
+    this.Items = [];
+  }
+
+  addItems(item) {
+    this.Items.push(item);
+  }
+
+  itemsClient() {
+    let result = {};
+    this.Items.forEach(function(p) {result[p.type] = (result[p.type] || 0) + 1;});
+  return result;
+  }
+}
+
+const Sales = function(nameClient,nameItem,typeItem,kolItem,sumItem, time = new Date()) { 
+  this.nameClient = nameClient;
+  this.nameItem = nameItem;
+  this.typeItem = typeItem;
+  this.kolItem = kolItem;
+  this.sumItem = sumItem;
+  this.time = time;
+}
+
+class Shop { 
+  constructor () {
+    this.Items = [];
+    this.Clients = [];
+    this.Saless = [];
+  }
+  
+  addItems(item) {
+    this.Items.push(item);
+  }
+
+  delItems(idItem) {
+    this.Items.forEach((item, i) => {
+      if (item.id == idItem) this.Items.splice(i,1);
+    })
+  }
+
+  addClients(item) {
+    this.Clients.push(item);
+  }
+
+  delClients(idClient) {
+    this.Clients.forEach((item, i) => {
+      if (item.id == idClient) this.Clients.splice(i,1);
+    })
+  }
+
+  sales(Client,nameItem,kol) {
+    let forSales = this.Items.filter((item) => {
+      return item.name == nameItem;
+    });
+
+    if (!forSales) return 'Товара '+idItem+' нет на складе';
+
+    if (kol > forSales.length) {
+      kol = forSales.length;
+      console.log('Запрос '+nameItem+' выше остатков. Выдаём сколько есть');
+    }
+
+    let infoItem = forSales[0];
+    forSales.splice(kol); //отсекаем конечные, которые поступили позже и продаём первые, принцив FIFO
+    //console.log(forSales);
+
+    let summa = 0
+    forSales.forEach((item,i) => {
+      summa += item.price; //потому что у товаров с одним наименованием может быть разная цена
+      Client.addItems(forSales[i]);
+      this.delItems(item.id);
+    });
+    this.Saless.push(new Sales(Client.firstname+' '+Client.lastname,infoItem.name,infoItem.type,kol,summa));
+    Client.summa += summa;
+  }
+
+    profit() {
+      let count = 0;
+      let summa = 0;
+      this.Saless.forEach((item) => {
+          count += item.kolItem;
+          summa += item.sumItem;
+      })
+    return 'Количество проданых товаров - '+count+' шт. на общую сумму - '+summa;
+    }
+
+    realSklad() {
+    return 'Количество товаров на складе - '+this.Items.length+' шт.';
+    }
+
+    itemsSklad() {
+      let result = {};
+      this.Items.forEach(function(p) {result[p.type] = (result[p.type] || 0) + 1;});
+    return result;
+    }
+
+    itemsSaled() {
+      let result = {};
+      this.Saless.forEach(function(p) {result[p.typeItem] = (result[p.typeItem] || 0) + p.sumItem;});
+    return result;
+    }
+}
+
+let myShop = new Shop;
+
+let item01 = new Item(1,'boots','choses',100),
+item02 = new Item(2,'boots','choses',100),
+item03 = new Item(3,'coat','clothes',200),
+item04 = new Item(4,'coat','clothes',300),
+item05 = new Item(5,'car','cars',2000),
+item06 = new Item(6,'fish','fishes',10),
+item07 = new Item(7,'meet','meets',10),
+item08 = new Item(8,'meet','meets',10),
+item09 = new Item(9,'meet','meets',15),
+item10 = new Item(10,'meet','meets',15),
+item11 = new Item(11,'meet','meets',15);
+
+myShop.addItems(item01);
+myShop.addItems(item02);
+myShop.addItems(item03);
+myShop.addItems(item04);
+myShop.addItems(item05);
+myShop.addItems(item06);
+myShop.addItems(item07);
+myShop.addItems(item08);
+myShop.addItems(item09);
+myShop.addItems(item10);
+myShop.addItems(item11);
+
+let client01 = new Client(1,'Jhon','Smith'),
+client02 = new Client(2,'Mat','Mating'),
+client03 = new Client(3,'Ivan','Ivanov');
+
+myShop.addClients(client01);
+myShop.addClients(client02);
+myShop.addClients(client03);
+console.log(myShop); // первоначальный магазин
+
+myShop.sales(client01,'meet',3);
+myShop.sales(client01,'car',2);
+console.log(myShop); //просле продаж
+
+console.log(myShop.profit()); //наша прибыль
+console.log(myShop.realSklad()); //наши остатки на складе
+console.log('Остатки типов товаров на складе:',myShop.itemsSklad());
+console.log('Продано типов товаров:',myShop.itemsSaled());
+console.log('Куплено товаров клиентом:',client01.itemsClient());
