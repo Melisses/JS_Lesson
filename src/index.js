@@ -46,5 +46,5 @@ console.log(myShop.profit()); //наша прибыль
 console.log(myShop.realSklad()); //наши остатки на складе
 console.log('Остатки типов товаров на складе:',myShop.itemsSklad());
 console.log('Продано типов товаров:',myShop.itemsSaled());
-console.log('Куплено товаров клиентом:',client01.itemClient());
-console.log(myShop.itemsClient());
+console.log('Куплено товаров клиентом:',client01.itemClient()); //можно посмотреть товары одного клиента
+console.log(myShop.itemsClient()); //подсчитываем количество купленных товаров у клиентов
