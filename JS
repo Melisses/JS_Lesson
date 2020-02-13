@@ -18,7 +18,7 @@ class Client {
     this.Items.push(item);
   }
 
-  itemsClient() {
+  itemClient() {
     let result = {};
     this.Items.forEach(function(p) {result[p.type] = (result[p.type] || 0) + 1;});
   return result;
@@ -112,6 +112,12 @@ class Shop {
       this.Saless.forEach(function(p) {result[p.typeItem] = (result[p.typeItem] || 0) + p.sumItem;});
     return result;
     }
+
+    itemsClient(){
+      let result = {};
+      this.Clients.forEach(p => result[p.firstname+' '+p.lastname] = p.Items.length);
+    return result;
+    }
 }
 
 let myShop = new Shop;
@@ -157,4 +163,5 @@ console.log(myShop.profit()); //наша прибыль
 console.log(myShop.realSklad()); //наши остатки на складе
 console.log('Остатки типов товаров на складе:',myShop.itemsSklad());
 console.log('Продано типов товаров:',myShop.itemsSaled());
-console.log('Куплено товаров клиентом:',client01.itemsClient());
+console.log('Куплено товаров клиентом:',client01.itemClient());
+console.log(myShop.itemsClient());
