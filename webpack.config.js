@@ -4,11 +4,11 @@ const path = require('path');
 
 module.exports = function(env, argv) {
     return {
-    entry: './src/index.js',
-    output: {
-        hashDigestLength: 10,
-        filename: (argv.mode === 'development' ? 'bundle.js' : 'bundle.[chunkhash].js'),
-        path: path.resolve(__dirname,'dist')
+        entry: './src/index.js',
+        output: {
+            hashDigestLength: 10,
+            filename: (argv.mode === 'development' ? 'bundle.js' : 'bundle.[chunkhash].js'),
+            path: path.resolve(__dirname,'dist')
+        }
     }
-}
 }
