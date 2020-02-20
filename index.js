@@ -8,9 +8,9 @@ const createElement = function(item, nClass, text, pSrc, pAlt) {
 
   if (text != null && text != '') insertText(text, elem);
 
-  if (text != null && text != '') elem.src = pSrc;
+  if (pSrc != null && pSrc != '') elem.src = pSrc;
 
-  if (text != null && text != '') elem.alt = pAlt;
+  if (pAlt != null && pAlt != '') elem.alt = pAlt;
 
   return elem;
 }
