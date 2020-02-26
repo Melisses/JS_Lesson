@@ -13,15 +13,16 @@
     .section {
         padding: 50px;
         flex-flow: column;
-        &__img {
-            width: 100%;
-        }
         &-itsme__img {
             display: none;
         }
     }
 
     .article {
+        &-slider {
+            width: 100%;
+        }
+
         &-itsme {
             width: 100%;
             margin-left: 0;

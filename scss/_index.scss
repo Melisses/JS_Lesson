@@ -39,6 +39,8 @@ html {
 }
 
 .header-article {
+    width: 50%;
+
     &__title {
         font-size: $basic-fontsize*2.5;
         margin-bottom: 50px;
@@ -58,52 +60,65 @@ html {
     }
 }
 
-.slider {
+.article-slider {
     text-align: center;
     position: relative;
     overflow: hidden;
+    width: 50%;
+}
 
+.slider-area {
+    transition: all 2s;
+    position: relative;
+    overflow: hidden;    
+}
+
+.slider {
     &__wrapper {
-        transition: all 2s;
+        display: flex;
+        transition: transform 0.6s ease;        
     }
 
     &__img {
         width: 100%;
+        flex: 0 0 100%;
     }
-}
 
-.slider__control {
-    position: absolute;
-    top: 60%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    color: #fff;
-    text-align: center;
-    opacity: 0.5;
-    height: 50px;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, .5);
-
-    &__control_show {
-        display: flex;
-      }
-
-    &:focus, &:hover {
-        color: #fff;
+    &__control {
+        position: absolute;
+        top: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        color: red;
+        text-align: center;
+        opacity: 0.5;
+        height: 50px;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, .5);
         text-decoration: none;
-        outline: 0;
-        opacity: .9;
-      }
+        font-size: 200%;
+        font-weight: bold;
 
-    &::before {
-        content: '';
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background: transparent no-repeat center center;
-        background-size: 100% 100%;
+        &_show {
+            display: flex;
+        }
+
+        &:hover {
+            color:red;
+            outline: 0;
+            opacity: .9;
+          }
+    
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: transparent no-repeat center center;
+            background-size: 100% 100%;
+        }
     }
 }
 
