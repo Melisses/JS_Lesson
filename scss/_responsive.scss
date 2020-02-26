@@ -1,0 +1,65 @@
+@media screen and (max-device-width: 1400px) {
+    .content, .header, .footer {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 780px) {
+    .header-article__item{
+        font-size: 130%;
+        margin-bottom: 20px;
+    }
+  
+    .section {
+        padding: 50px;
+        flex-flow: column;
+        &__img {
+            width: 100%;
+        }
+        &-itsme__img {
+            display: none;
+        }
+    }
+
+    .article {
+        &-itsme {
+            width: 100%;
+            margin-left: 0;
+            text-align: center;
+        }
+        &-aboutme__column {
+            width: 100%;
+        } 
+        &-aboutme {
+            flex-flow: column;
+        }
+    }
+
+    .article-itsme__text, .article-aboutme__item, .footer-address {
+        font-size: 150%;
+    }
+
+}
+@media screen and (max-width: 640px) {
+    .header-article__title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .section {
+        padding: 20px;
+    }
+    .article{
+        &-itsme {
+            margin-top: 20px;
+        }
+        &-skills__column {
+            padding: 20px 0;
+        }
+    }
+
+    .article-itsme__text, .article-aboutme__item, 
+    .footer-address, .header-article__item {
+        font-size: 100%;
+    }
+
+}
