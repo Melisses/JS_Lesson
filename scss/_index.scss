@@ -119,23 +119,22 @@ html {
             background: transparent no-repeat center center;
             background-size: 100% 100%;
         }
+
+        &_left {
+            left: 0;
+            &::before, &::after { left: 32%; }
+            &::before { transform-origin: 0 0;  }
+            &::after { transform-origin: 0 100%; }
+        }
+
+        &_right {
+            right: 0;
+            &::before, &::after { right: 32%; }
+            &::before { transform-origin: 100% 100%; }
+            &::after { transform-origin: 100% 0; }
+        }
     }
 }
-
-.slider__control_left {
-    left: 0;
-    &::before, &::after { left: 32%; }
-    &::before { transform-origin: 0 0;  }
-    &::after { transform-origin: 0 100%; }
-  }
-
-  .slider__control_right {
-    right: 0;
-    &::before, &::after { right: 32%; }
-    &::before { transform-origin: 100% 100%; }
-    &::after { transform-origin: 100% 0; }
-  
-  }
 
 .content {
     @include template-size($content-width);
@@ -239,3 +238,59 @@ html {
     visibility: hidden;
     transition: .55s opacity, .55s visibility;
 }
+
+.ancher_top {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    z-index: 9999;
+    font-size: 200%;
+    width: 50px;
+    height: 50px;
+    background: #f5f5f5;
+    color: #444;
+    cursor: pointer;
+    border-radius: 2px;
+    display: none;
+    text-decoration: none;
+  }
+  
+  .ancher_top:hover {
+    background: #e9ebec;
+  }
+  
+  .ancher_top-show {
+    @include display(flex);
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    opacity: .5;
+  }
+
+  .ancher_itsme, .ancher_aboutme, .ancher_skills {
+    color: white;
+    text-decoration: none;
+    font-size: 130%;
+  }
+  
+  @keyframes slide-down {
+    0% { opacity: 0; transform: translateY(-100%); }   
+  100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  .nav {
+    @include template-size($basic-width);
+    background-color: #444;
+    display: none;
+    animation: slide-down 1s ease-out;
+  }
+  
+  .nav-ul {
+    @include display(flex);
+    justify-content: space-around;
+  }
+  
+  .nav__item {
+    margin: 10px;
+    padding: 20px;
+  }

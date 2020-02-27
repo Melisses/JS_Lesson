@@ -1,3 +1,4 @@
+///////////////////hide slider////////////////////////
 let clickMe = document.querySelector('.clickMe');
 
 clickMe.addEventListener('click', function () {
@@ -102,5 +103,44 @@ var multiItemSlider = (function () {
 
   var slider = multiItemSlider('.slider-area')
 
-//////////////////////////////////////////////////////
+////////////////////////slow anchers///////////////////////
+var goTopBtn = document.querySelector('.ancher_top');
+window.addEventListener('scroll', trackScroll);
+function trackScroll() {
+    var scrolled = window.pageYOffset;
+    var coords = 100; //document.documentElement.clientHeight;
 
+    if (scrolled > coords) {
+        goTopBtn.classList.add('ancher_top-show');
+    } else {
+        goTopBtn.classList.remove('ancher_top-show');
+    }
+}
+
+document.querySelectorAll('a[href^="#"').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        let href = this.getAttribute('href').substring(1);
+
+        const scrollTarget = document.querySelector('[data-ancher^="' + href + '"');
+
+        //const topOffset = document.querySelector('.scrollto').offsetHeight;
+        const topOffset = 0; // если не нужен отступ сверху 
+        const elementPosition = scrollTarget.getBoundingClientRect().top;
+        const offsetPosition = elementPosition - topOffset;
+
+        window.scrollBy({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    });
+});
+
+////////////////////////new block///////////////////////
+window.addEventListener('load', function() {
+    let navs = document.querySelector('.nav')
+    setTimeout(() => {
+        navs.style.display='block';
+    }, 2000);
+});

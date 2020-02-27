@@ -7,16 +7,17 @@
     <title>Домашняя работа №6</title>
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body data-ancher="top">
     <header class="header header_color">
         <section class="section">
             <article class="article header-article article_color">
                 <h1 class="header-article__title">Домашнее задание №6. JS анимация</h1>
                 <ul class="header-article__list">
-                    <li class="header-article__item">Создана новая ветка work-2 в LessonN2</li>
-                    <li class="header-article__item">Переделаны файлы каскадных стилей по технологии SCSS</li>
-                    <li class="header-article__item">Выполнена адаптивная вёрстка для различных мобильных устройств</li>
-                    <li class="header-article__item">Выполнен Pull request</li>
+                    <li class="header-article__item">Создана новая ветка lesson_7 в JS_Lessons</li>
+                    <li class="header-article__item">В блоке header создан слайдер</li>
+                    <li class="header-article__item">Кнопка над слайдером скрывает/отображает его</li>
+                    <li class="header-article__item">Добавлено меню появляющее через 3 сек после загрузки</li>
+                    <li class="header-article__item">В меню сделан переход по якорям</li>
                 </ul>
             </article>
             <article class="article-slider">
@@ -35,11 +36,17 @@
                     <a class="slider__control slider__control_right slider__control_show" href="#" role="button">=></a>
                 </div>
             </div>
-            
         </section>
     </header>
+    <nav class="nav">
+        <ul class="nav-ul">
+            <li class="nav__item"><a class="anchers ancher_itsme" href='#itsme'>Обо мне</a></li>
+            <li class="nav__item"><a class="anchers ancher_aboutme" href='#aboutme'>Достижения</a></li>
+            <li class="nav__item"><a class="anchers ancher_skills" href='#skills'>Навыки</a></li>
+        </ul>
+    </nav>
     <main class="content">
-        <section class="section section-itsme">
+        <section class="section section-itsme" data-ancher="itsme">
             <img class="section-itsme__img" src="assets/img-1.jpg" alt="">
             <article class="article article-itsme">
                 <h2 class="title">Обо мне</h2>
@@ -61,7 +68,7 @@
             <div style="clear: both;"></div>
         </section>
 
-        <section class="section section-aboutme section_color">
+        <section class="section section-aboutme section_color" data-ancher="aboutme">
             <h2 class="title title_center">Мои достижения</h2>
             <article class="article article-aboutme">
                 <div class="article-aboutme__column">
@@ -121,7 +128,7 @@
                 </div>
             </article>
         </section>
-        <section class="section section-skills">
+        <section class="section section-skills" data-ancher="skills">
             <h2 class="title title_center">Мои навыки</h2>
             <article class="article article-skills">
                 <div class="article-skills__column">
@@ -165,6 +172,8 @@
             </address>
         </section>
     </footer>
+    <a class="anchers ancher_top" href='#top' title="Наверх">↑</a>
+
 <script src='index.js'></script>
 </body>
 </html>
